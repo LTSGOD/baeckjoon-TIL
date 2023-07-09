@@ -12,7 +12,7 @@ for num in list(map(int, input().split())):
     num_l.append(tmp + num)
     tmp += num
 
-querys = [list(map(int, input().split())) for _ in range(M)]
+querys = [map(int, input().split()) for _ in range(M)]
 
 for query in querys:
     start, end = query
