@@ -1,5 +1,4 @@
 import sys
-from heapq import heappush, heappop
 
 input = sys.stdin.readline
 
@@ -15,4 +14,5 @@ for num in list(map(int, input().split())):
 
 for _ in range(M):
     start, end = map(int, input().split())
-    print(num_l[end]-num_l[start-1])
+    sys.stdout.write(f"{num_l[end] - num_l[start-1]}\n")
+    # print(num_l[end]-num_l[start-1])
