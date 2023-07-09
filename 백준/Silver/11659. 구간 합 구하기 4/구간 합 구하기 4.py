@@ -12,8 +12,7 @@ for num in list(map(int, input().split())):
     num_l.append(tmp + num)
     tmp += num
 
-querys = [map(int, input().split()) for _ in range(M)]
 
-for query in querys:
-    start, end = query
+for _ in range(M):
+    start, end = map(int, input().split())
     print(num_l[end]-num_l[start-1])
