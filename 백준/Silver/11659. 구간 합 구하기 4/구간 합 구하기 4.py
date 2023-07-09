@@ -3,7 +3,7 @@ from heapq import heappush, heappop
 
 input = sys.stdin.readline
 
-N, M = list(map(int, input().split()))
+N, M = map(int, input().split())
 
 tmp = 0
 
