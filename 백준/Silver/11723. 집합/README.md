@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 31256 KB, 시간: 3164 ms
+메모리: 31256 KB, 시간: 5212 ms
 
 ### 분류
 
@@ -20,7 +20,7 @@
 	<li><code>check x</code>: S에 x가 있으면 1을, 없으면 0을 출력한다. (1 ≤ x ≤ 20)</li>
 	<li><code>toggle x</code>: S에 x가 있으면 x를 제거하고, 없으면 x를 추가한다. (1 ≤ x ≤ 20)</li>
 	<li><code>all</code>: S를 {1, 2, ..., 20} 으로 바꾼다.</li>
-	<li><code>empty</code>: S를 공집합으로 바꾼다. </li>
+	<li><code>empty</code>: S를 공집합으로 바꾼다.</li>
 </ul>
 
 ### 입력 
