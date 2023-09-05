@@ -2,24 +2,23 @@ import sys
 
 input = sys.stdin.readline
 
-n = int(input())
-m = int(input())
-pN = input().rstrip()
+N = int(input())
+M = int(input())
 
-length = 2*n + 1
-correct = ""
-for i in range(length):
-    if i % 2 == 0:
-        correct += 'I'
-    else:
-        correct += 'O'
+P = input().rstrip()
+
+i = 0
 count = 0
+result = 0
+while i < M - 2:
+    if P[i:i+3] == "IOI":
+        count +=1
+        i += 2
+        if count == N:
+            result += 1
+            count -= 1
+    else:
+        i += 1
+        count = 0
 
-for i, string in enumerate(pN):
-    if string == 'I':
-        if i +length > m:
-            break
-        tmp = pN[i:i+length]
-        if tmp == correct:
-            count += 1
-print(count)
+print(result)
