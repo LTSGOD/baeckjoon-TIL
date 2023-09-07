@@ -1,14 +1,16 @@
 import sys
-from collections import deque
 
 input = sys.stdin.readline
 
-N, M = map(int, input().split())
+N, M  =map(int, input().split())
 
-book = {}
+book = dict()
+
 for _ in range(N):
-    name, password = input().split()
-    book[name] = password
+    a,b = input().rstrip().split()
+    book[a] = b
 
 for _ in range(M):
-    print(book[input().rstrip()])
+    q = input().rstrip()
+
+    print(book[q])
