@@ -4,6 +4,7 @@ from collections import deque
 input = sys.stdin.readline
 
 # 최소 몇번만에 이동하는지 출력하는 것이기 때문에 bfs사용
+# board에다가 거리 기록
 
 def bfs(x,y):
     queue = deque()
@@ -14,6 +15,7 @@ def bfs(x,y):
     while queue:
         current_x, current_y = queue.popleft()
 
+        # 갈 수 있는 방향에 대해 탐색
         for dx, dy in [(-2,1),(-2,-1),(1,2),(-1,2),(2,1),(2,-1),(1,-2),(-1,-2)]:
             next_x = current_x + dx
             next_y = current_y + dy
@@ -23,6 +25,8 @@ def bfs(x,y):
             if visited[next_x][next_y] == False:
                 queue.append((next_x, next_y))
                 visited[next_x][next_y] = True
+
+                #거리 기록
                 board[next_x][next_y] = board[current_x][current_y] + 1
 T = int(input())
 
