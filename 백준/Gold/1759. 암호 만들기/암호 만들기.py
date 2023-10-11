@@ -8,10 +8,11 @@ L, C = map(int,input().split())
 
 alphabet = list(input().rstrip().split())
 visited ={i:False for i in alphabet}
+result = deque()
 
 alphabet.sort()
 
-def recursion(depth, result, start):
+def recursion(depth, start):
     global 모음
     global 자음
 
@@ -34,12 +35,20 @@ def recursion(depth, result, start):
             자음 += 1
 
         #result 리스트에 추가
-        copy_result = deepcopy(result)
-        copy_result.append(alphabet[i])
+        result.append(alphabet[i])
 
+        #방문 노드 체킹
         visited[alphabet[i]] = True
-        recursion(depth + 1, copy_result, i + 1)
+
+        recursion(depth + 1, i + 1)
+
+        #방문 해제
         visited[alphabet[i]] = False
+
+        #result 배열에서 pop
+        result.pop()
+
+        #자음 모음 숫자 줄이기
         if flag:
             모음 -= 1
         else:
@@ -47,4 +56,4 @@ def recursion(depth, result, start):
 
 모음 = 0
 자음 = 0
-recursion(0,[], 0)
+recursion(0, 0)
