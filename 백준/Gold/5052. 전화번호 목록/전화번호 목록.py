@@ -1,7 +1,5 @@
 import sys
-
-import heapq
-
+from collections import deque
 input = sys.stdin.readline
 
 T = int(input())
@@ -41,11 +39,7 @@ for _ in range(T):
     # 왼쪽에 10자리를 채워서 오름차순 정렬 
     number_list.sort(key=lambda x: (x.ljust(10, '0'), len(x)))
 
-    # heapq에 넣기 위해 인덱스 추가
-    number_list = [(i, v) for i, v in enumerate(number_list)]
-
-    #heapq화
-    heapq.heapify(number_list)
+    number_list = deque(number_list)
     flag = True
 
     # print(number_list)
@@ -54,14 +48,14 @@ for _ in range(T):
     while number_list:
 
         #한개 꺼냄(최솟값 보장)
-        _, current = heapq.heappop(number_list)
+        current = number_list.popleft()
         
         #heapq가 비어있다면 멈춤
         if not number_list:
             break
 
         #꺼낸 값이 그 다음 값 안에 포함 되어있으면 일관성 X
-        if check(current, number_list[0][1]):
+        if check(current, number_list[0]):
             flag = False
             print('NO')
             break
