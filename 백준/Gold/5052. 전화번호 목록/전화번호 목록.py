@@ -11,6 +11,11 @@ T = int(input())
 #2
 #20
 #2
+# in 으로 체크 했더니 밑에 예시도 맡다고 표시... ㅠ 그래서 check 하는 함수 만듦
+# 1
+# 2
+# 21
+# 1
 
 def check(current, b):
     # print("hoho")
