@@ -1,39 +1,42 @@
-from sys import stdin
+import sys
+input = sys.stdin.readline
 
-input = stdin.readline
-
-def bf():
-    # inf를 사용하지 않고 임의의 큰 수 사용
-    D = [200000000] * (N+1)
-    # 어느 점을 기준으로 해도 상관없음
-    D[1] = 0
-
-    # N번 검사 
-    for i in range(N):
-        for rou in route:
-            start, goal, time = rou
-            if D[goal] > D[start] + time:
-                D[goal] = D[start] + time
-                # N번 시행시 갱신된다면, 음의 가중치 판단.
-                if i == N-1:
-                    return 'YES'
-    return 'NO'
-
-
-# 변수 입력
 TC = int(input())
 
+def bellman(start):
+
+    distance[start] = 0
+    for s in range(1, N + 1):
+        #각 노드 마다 체크
+        for i in range(1, N+1):
+
+            # 노드의 모든 간선 체크
+            for next_node, value in edge[i]:
+
+                if (distance[i] + value) < distance[next_node]:
+                    distance[next_node] = distance[i] + value
+                    if s == N:
+                        return True
+    return False
+
+
 for _ in range(TC):
-    N, M, W = map(int,input().split())
-    route = []
+    N, M, W = map(int, input().split())
+
+    edge = [[] for _ in range(N + 1)]
+
     for _ in range(M):
-        a, b, t = map(int,input().split())
-        route.append([a,b,t])
-        route.append([b,a,t])
+        a,b, v = map(int, input().split())
+        edge[a].append((b,v))
+        edge[b].append((a,v))
 
     for _ in range(W):
-        s, e, t = map(int,input().split())
-        route.append([s,e,-t])
-
-
-    print(bf())
+        a,b, v = map(int, input().split())
+        edge[a].append((b,-v))
+    
+    distance = [int(1e9) for _ in range(N+1)]
+    #1번 노드에서 각 경로까지 최단경로
+    if bellman(1):
+        print("YES")
+    else:
+        print("NO")
