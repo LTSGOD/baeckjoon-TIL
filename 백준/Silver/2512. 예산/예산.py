@@ -34,6 +34,7 @@ def check(mid):
     else:
         return False
 
+#부등호 안붙여서 틀림
 if sum(budget) <= limit:
     print(max(budget))
     exit()
