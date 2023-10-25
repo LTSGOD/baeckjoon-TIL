@@ -6,7 +6,7 @@ input = sys.stdin.readline
 
 # 일단 노가다로 모든 경우의 수를 계산할 경우
 # O(n제곱) 시간복잡도 따라서 시간 초과
-# nlong n 안에 끝내야함.
+# nlog(n)안에 끝내야함.
 
 
 N = int(input())
@@ -18,11 +18,15 @@ attribute.sort()
 result = []
 for i,num in enumerate(attribute):
 
+    #비교하는 숫자에 잠시 똑같은 숫자 넣어둠.
+    #0번 인덱스 경우 맨 마지막 숫자가 들어 오지만 밑에서 처리해줌.
+    #mid 예외 처리
+    #-1 100 -9
     attribute[i] = attribute[i-1]
+
     start = 0
     end = len(attribute) - 1
-    # print(f'{num}----------------------------')
-    # print(attribute[start], attribute[end])
+    
     while start + 1 < end:
 
         #자기자신 선택되면 보정
