@@ -14,6 +14,7 @@ def solution(arrayA, arrayB):
     gcd_a = arrayA[0]
     gcd_b = arrayB[0]
     
+    #c최대공약수 구하기
     for i in range(0, len(arrayA)):
         gcd_a = gcd(gcd_a, arrayA[i])
         gcd_b = gcd(gcd_b, arrayB[i])
