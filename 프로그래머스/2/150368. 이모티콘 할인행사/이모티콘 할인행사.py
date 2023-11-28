@@ -1,5 +1,6 @@
-max_plus = 0
+max_plus = 0 
 max_money = 0
+ratio = []
 
 def discount(num, ratio):
     return num * (1.0-(ratio/100))
@@ -22,8 +23,10 @@ def check(users, 이모티콘):
     return 플러스가입자수, 총가격합
 
 def recursion(depth, users, N):
+    
     global max_plus
-    global max_money
+    global max_money 
+    global ratio
     
     if depth == N:
         이모티콘 = [[ratio[i],discount(price,ratio[i])] for i,price in enumerate(emo)]
@@ -41,14 +44,10 @@ def recursion(depth, users, N):
         ratio.pop()
         
 def solution(users, emoticons):    
-    global ratio
     global emo
     emo = emoticons
-    ratio = []
-    
     emoticons.sort()
 
     recursion(0, users, len(emoticons))
-    
     
     return [max_plus, max_money]
