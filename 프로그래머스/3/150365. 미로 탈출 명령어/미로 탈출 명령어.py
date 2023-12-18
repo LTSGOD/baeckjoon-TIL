@@ -12,6 +12,10 @@ def recursion(depth,n,m,current_x,current_y,r,c, k):
     #현재 있는 거리에서 더이상 도착지에 갈 수 없다면
     if abs(r-current_x)+ abs(c - current_y) > (k - depth):
         return False
+
+    #판단해주기
+    if ((k-depth) - abs(r-current_x) - abs(c-current_y)) % 2 != 0:
+        return False
     
     for d in ['d','l','r','u']:
         
@@ -56,10 +60,11 @@ def solution(n, m, x, y, r, c, k):
     global result
     result = []
 
-    if k < abs(r-x) + abs(c-y):
-        return "impossible"
-    if abs(k - abs(r-x) + abs(c-y)) % 2 != 0:
-        return "impossible"
     recursion(0,n,m,x,y,r,c,k)
+    
+    if not result:
+        return "impossible"
+    else:
+        return "".join(result)
     
     return "".join(result)
