@@ -10,17 +10,15 @@ def recursion(depth, picks, N, minerals):
             최소피로도 = 피로도
         return
     
-    visited = [False for _ in range(3)]
-    
+
     for 곡괭이번호 in [0,1,2]:
         if picks[곡괭이번호] == 0:
             continue
-        if visited[곡괭이번호] == True:
-            continue
+
             
         #곡괭이 1개 빼기
         picks[곡괭이번호] -= 1
-        visited[곡괭이번호] = True
+        # visited[곡괭이번호] = True
         result.append(곡괭이번호)
         
         recursion(depth+1, picks,N,minerals)
