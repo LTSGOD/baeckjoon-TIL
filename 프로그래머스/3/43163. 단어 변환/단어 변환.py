@@ -24,6 +24,7 @@ def recursion(begin, words, target):
             visited[i] = True
             answer += 1
             if recursion(w, words, target):
+                print(w)
                 return True
             answer -= 1
 
