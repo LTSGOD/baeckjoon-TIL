@@ -26,6 +26,8 @@ def recursion(begin, words, target):
             if recursion(w, words, target):
                 print(w)
                 return True
+            else:
+                visited[i] = False
             answer -= 1
 
     return False
