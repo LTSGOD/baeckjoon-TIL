@@ -5,6 +5,11 @@
 # 3 1 1 1 1 1 1 1 (3 * 1 )
 # 시간복잡도 계산하기 귀찬 완탐이 되지 않을까
 
+#백트래킹 + 구현 + edge 응용 문제
+#1. 점수를 얻거나 잃거나 2가지 경우 밖에 없음.
+#2. 하지만 0의 경우 예외
+#3. 점수계산 체크하는 것에서 예외들이 많아서 조심히 풀어야함.
+
 #어피치점수, 라이언점수 계산
 def check(라이언정보, 어피치정보, n):
     라이언점수 = 0
@@ -56,6 +61,7 @@ def recursion(depth, n, info, index):
     for i in range(index, len(라이언정보)):
         
         tmp = 0
+        #0점 처리
         if i == 10:
             tmp = n - sum(라이언정보)
         else:
@@ -64,8 +70,7 @@ def recursion(depth, n, info, index):
         recursion(depth+tmp, n, info, i + 1)
         라이언정보[i] -= tmp
 
-        
-    
+
 def solution(n, info):
 
     global 라이언정보
