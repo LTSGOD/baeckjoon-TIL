@@ -1,12 +1,12 @@
-def recursion(n, to, end):
+def recursion(n, start, end):
     
     if n == 1:
-        answer.append([to, end])    
+        answer.append([start, end])    
         return
-    나머지 = abs(6 - to - end)
+    나머지 = abs(6 - start - end)
 
-    recursion(n-1, to, 나머지)
-    answer.append([to, end])
+    recursion(n-1, start, 나머지)
+    answer.append([start, end])
     recursion(n-1, 나머지, end)
 
 def solution(n):
