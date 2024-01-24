@@ -29,7 +29,6 @@ def recursion(depth,user_id, banned_id):
     
     if depth == len(banned_id):
         
-        
         사전.add(tuple(sorted(result)))
         
         return
@@ -48,10 +47,13 @@ def recursion(depth,user_id, banned_id):
             if check(u_id, b_id):
                 user_visited[j] = True
                 result.append(u_id)
+                
                 recursion(depth+1, user_id, banned_id)
+                
                 result.pop()
                 user_visited[j] = False
         banned_visited[i] = False
+#       return 추가해서 테스트 케이스 5번 통과
         return
 
 def solution(user_id, banned_id):
