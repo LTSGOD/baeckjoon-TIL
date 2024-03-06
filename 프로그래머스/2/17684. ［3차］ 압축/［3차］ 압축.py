@@ -6,9 +6,13 @@ def solution(msg):
     i = 0
 
     while i < len(msg):
+        
+        
         if i == len(msg) - 1:
             answer.append(사전[msg[i]])
             break
+            
+            
         j = i + 1
         tmp = msg[i]
         count = 1
