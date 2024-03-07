@@ -3,6 +3,7 @@ def check(stones,mid, k):
     count = 0 
     
     for i in range(0, len(stones)):
+        
         if stones[i] - mid < 1:
             count += 1
         else:
@@ -11,12 +12,12 @@ def check(stones,mid, k):
         if count == k:
             return False
     return True
+
 def solution(stones, k):
     answer = 0
     
     start = 0
     end = max(stones)
-    
     while start + 1 < end:
         
         mid = (start + end) // 2
