@@ -1,20 +1,17 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
 class Solution {
     public int solution(int[] num_list) {
         int answer = 0;
         
-        String odd = "";
-        String even = "";
+        int odd = Integer.parseInt(
+            Arrays.stream(num_list).filter(value -> value % 2 != 0).mapToObj(Integer::toString).collect(Collectors.joining())
+        );
         
-        for (int i = 0; i < num_list.length; i++) {
-            
-            if (num_list[i] % 2 == 0) {
-                even += Integer.toString(num_list[i]);
-            } else {
-                odd += Integer.toString(num_list[i]);
-            }
-        }
-        
-        answer = Integer.parseInt(even) + Integer.parseInt(odd);
+        int even = Integer.parseInt(Arrays.stream(num_list).filter(value->value%2 == 0).mapToObj(Integer::toString).collect(Collectors.joining()));
+         
+        answer = even + odd;
         
         return answer;
     }
