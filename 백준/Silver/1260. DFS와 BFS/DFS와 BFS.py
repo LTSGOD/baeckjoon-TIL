@@ -1,57 +1,62 @@
 import sys
 from collections import deque
+
 input = sys.stdin.readline
 
+def dfs(start):
 
-def DFS(v):
+    s = []
 
-    stack = deque()
-    stack.append(v)
+    s.append(start)
 
-    while(stack):
-        current = stack.pop()
+    while s:
+        current = s.pop()
 
-        if(visited[current] == True):
+        if visited[current]:
             continue
-
-        dfs_list.append(current)
         visited[current] = True
+        print(current, end=" ")
 
-        for node in sorted(edge[current], reverse=True):
-            stack.append(node)
+        for n in edge[current]:
+            if not visited[n]:
+                s.append(n)
 
-
-def BFS(v):
-
+def bfs(start):
     q = deque()
-    q.append(v)
+    q.append(start)
 
-    while(q):
+    while q:
         current = q.popleft()
-        if(visited[current] == True):
+
+        if visited[current]:
             continue
-
-        bfs_list.append(current)
         visited[current] = True
-        for node in sorted(edge[current]):
-            q.append(node)
+        print(current, end=" ")
 
+        for n in edge[current]:
+            if not visited[n]:
+                q.append(n)
+N, M, V = map(int, input().split())
 
-n, m, v = map(int, input().split())
+edge = [[] for _ in range(N + 1)]
+visited = [False for _ in range(N + 1)]
 
-edge = [[] for _ in range(n + 1)]
-visited = [False] * (n + 1)
-
-for _ in range(m):
+for _ in range(M):
     s, e = map(int, input().split())
     edge[s].append(e)
     edge[e].append(s)
 
-dfs_list = []
-bfs_list = []
-DFS(v)
-visited = [False] * (n + 1)
-BFS(v)
+for i in range(N + 1):
+    edge[i].sort(reverse=True)
 
-print(*dfs_list)
-print(*bfs_list)
+dfs(V)
+
+visited = [False for _ in range(N + 1)]
+for i in range(N + 1):
+    edge[i].sort()
+
+print()
+bfs(V)
+
+
+
